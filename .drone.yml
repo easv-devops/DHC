@@ -9,7 +9,7 @@ steps:
       pgconn:
         from_secret: PGCONN
     commands:
-      - cd Calculator/Test
+      - cd Test
       - dotnet restore
       - dotnet test
       - cd ../app

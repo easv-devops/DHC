@@ -30,15 +30,16 @@ instead of the normal usage, being docker-compose up
 navigate to the app directory in the console and input
 ````docker build -t calculator .````
 
-The -t option is used to tage the image and the period at the end instructs docker to user the file in the current directory. 
+- -t option is used to tage the image 
+- . instructs docker to user the file in the current directory. 
 Next run:
 
 ````docker run -it -e "pgconn={YOUR CONNECTION STRING} --name calc calculator````
 
 A breakdown of this command:
--it is for running the container in interactive mode
--e is setting environment variables
---name {container name} {image name}
+- -it is for running the container in interactive mode
+- -e is setting environment variables
+- --name {container name} {image name}
 
 
 ## App without docker
