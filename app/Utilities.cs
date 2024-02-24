@@ -1,7 +1,9 @@
 namespace app;
 
+// This class is used to structure the connection string, based on a string from elephantSql
 public class Utilities
 {
+    
     private static readonly Uri Uri = new Uri(Environment.GetEnvironmentVariable("pgconn")!);
 
     public static readonly string
