@@ -11,11 +11,10 @@ steps:
       TOKEN:
         from_secret: TOKEN
     commands:
-      - echo $TOKEN
       - cd Test
       - dotnet restore
       - dotnet test
-      - dotnet sonarscanner begin /k:"easv-devops_DHC_AY3dBr7mEVvRW2O60EHF" /d:sonar.host.url="http://sonar.setgo.dk:9000"  /d:sonar.token="$TOKEN" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.qualitygate.wait=true
+      - dotnet sonarscanner begin /k:"easv-devops_DHC_AY3dBr7mEVvRW2O60EHF" /d:sonar.host.url="http://sonar.setgo.dk:9000"  /d:sonar.token="easv-devops_DHC_asom55omasomfAOMSG512omaosmsGOMDNA" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.qualitygate.wait=true
       - dotnet build --no-incremental
       - dotnet-coverage collect "dotnet test" -f xml -o "../Test/coverage.xml"
-      - dotnet sonarscanner end /d:sonar.token="$TOKEN"
+      - dotnet sonarscanner end /d:sonar.token="easv-devops_DHC_asom55omasomfAOMSG512omaosmsGOMDNA"
