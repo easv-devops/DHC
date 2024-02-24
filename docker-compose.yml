@@ -7,4 +7,4 @@ services:
       dockerfile: Dockerfile
     image: mycalculator
     environment:
-      pgconn: "postgres://ubfbczdx:JW8_GajcXz40VW9-qtM4NpuZFsXVzcCj@snuffleupagus.db.elephantsql.com/ubfbczdx"
+      pgconn: "YOUR STRING HERE"
