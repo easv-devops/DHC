@@ -5,17 +5,17 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Calculator.csproj", "./"]
-RUN dotnet restore "Calculator.csproj"
+COPY ["app.csproj", "./"]
+RUN dotnet restore "app.csproj"
 COPY . .
 WORKDIR "/src/"
-RUN dotnet build "Calculator.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "app.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "Calculator.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "app.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Calculator.dll"]
+ENTRYPOINT ["dotnet", "app.dll"]

@@ -26,12 +26,29 @@ As this application is built with the idea of being a console based calculator, 
 
 instead of the normal usage, being docker-compose up
 
+## App in a container
+navigate to the app directory in the console and input
+````docker build -t calculator .````
+
+The -t option is used to tage the image and the period at the end instructs docker to user the file in the current directory. 
+Next run:
+
+````docker run -it -e "pgconn={YOUR CONNECTION STRING} --name calc calculator````
+
+A breakdown of this command:
+-it is for running the container in interactive mode
+-e is setting environment variables
+--name {container name} {image name}
+
+
 ## App without docker
 
-This application can also be used without docker, just set your connection string with the command
+This application can also be used without docker. Navigate to the app directory and set your connection string with the command
 
 ```` export pgconn={YOUR CONNECTION STRING HERE} ````
+and
 
+````dotnet run````
 in the console and it will work there as well!
 
 ## ENJOY THE MATH!
