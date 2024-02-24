@@ -11,6 +11,7 @@ steps:
       TOKEN:
         from_secret: TOKEN
     commands:
+      - echo $TOKEN
       - cd Test
       - dotnet restore
       - dotnet test
