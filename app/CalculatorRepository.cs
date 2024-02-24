@@ -1,6 +1,6 @@
 using Npgsql;
 
-namespace Calculator;
+namespace app;
 
 public interface ICalculatorRepository
 {

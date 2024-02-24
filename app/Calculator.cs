@@ -1,4 +1,4 @@
-namespace Calculator;
+namespace app;
 
 public interface ICalculator
 {
