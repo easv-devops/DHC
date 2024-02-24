@@ -8,12 +8,13 @@ steps:
     environment:
       pgconn:
         from_secret: PGCONN
+      TOKEN:
+        from_secret: TOKEN
     commands:
       - cd Test
       - dotnet restore
       - dotnet test
-      - dotnet sonarscanner begin /k:"easv-devops_DHC_AY3dBr7mEVvRW2O60EHF" /d:sonar.host.url="http://sonar.setgo.dk:9000"  /d:sonar.token="sqp_8e4033cf6f7f9407ce2248cc18100ea785d8b962" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.qualitygate.wait=true
+      - dotnet sonarscanner begin /k:"easv-devops_DHC_AY3dBr7mEVvRW2O60EHF" /d:sonar.host.url="http://sonar.setgo.dk:9000"  /d:sonar.token="$TOKEN" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.qualitygate.wait=true
       - dotnet build --no-incremental
       - dotnet-coverage collect "dotnet test" -f xml -o "../Test/coverage.xml"
-      - dotnet sonarscanner end /d:sonar.token="sqp_8e4033cf6f7f9407ce2248cc18100ea785d8b962"
-        
+      - dotnet sonarscanner end /d:sonar.token="$TOKEN"
