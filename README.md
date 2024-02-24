@@ -48,7 +48,7 @@ This application can also be used without docker. Navigate to the app directory 
 
 ```` export pgconn={YOUR CONNECTION STRING HERE} ````
 
-&
+and
 
 ````dotnet run````
 in the console and it will work there as well!
