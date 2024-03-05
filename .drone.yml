@@ -3,17 +3,17 @@ type: docker
 name: integration
 
 steps:
-  - name: build
-    image: boulundeasv/dotnet-sdk-with-java
+  - name: push to docker
+    image: plugins/docker
     environment:
       pgconn:
         from_secret: PGCONN
-    commands:
-      - cd Test
-      - dotnet restore
-      - dotnet test
-      - dotnet sonarscanner begin /k:"easv-devops_DHC_asom55omasomfAOMSG512omaosmsGOMDNA" /d:sonar.host.url="http://sonar.setgo.dk:9000"  /d:sonar.token="sqp_8e4033cf6f7f9407ce2248cc18100ea785d8b962" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.qualitygate.wait=true
-      - dotnet build --no-incremental
-      - dotnet-coverage collect "dotnet test" -f xml -o "../Test/coverage.xml"
-      - dotnet sonarscanner end /d:sonar.token="sqp_8e4033cf6f7f9407ce2248cc18100ea785d8b962"
-        
+    settings:
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      dockerfile: app/Dockerfile
+      repo: donhundley/calculator
+      tags:
+        - latest 
