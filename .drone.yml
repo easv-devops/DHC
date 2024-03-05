@@ -14,6 +14,7 @@ steps:
       password:
         from_secret: DOCKER_PASSWORD
       dockerfile: app/Dockerfile
+      context: ./app
       repo: donhundley/calculator
       tags:
         - latest 
